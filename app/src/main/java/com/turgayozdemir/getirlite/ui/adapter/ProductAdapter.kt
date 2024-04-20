@@ -4,6 +4,7 @@ import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
 import com.turgayozdemir.getirlite.data.model.Product
 import com.turgayozdemir.getirlite.databinding.RecyclerProductBinding
@@ -25,8 +26,14 @@ class ProductAdapter(val productList : ArrayList<Product>) : RecyclerView.Adapte
 
     override fun onBindViewHolder(holder: ProductHolder, position: Int) {
         holder.binding.productName.text = productList[position].name
+
+        var url : String = productList[position].imageURL!!
+        if (!url.startsWith("https://") && url.startsWith("http://")){
+            url = url.replaceFirst("http://", "https://")
+        }
+
         Picasso.get()
-            .load(productList[position].imageURL)
+            .load(url)
             .into(holder.binding.productImage)
         holder.binding.productPrice.text = productList[position].priceText
 

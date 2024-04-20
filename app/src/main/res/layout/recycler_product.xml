@@ -82,7 +82,7 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <TextView
-        android:id="@+id/productPrice"
+        android:id="@+id/detailProductPrice"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="5sp"
@@ -92,7 +92,7 @@
         android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/productName"
+        android:id="@+id/detailProductName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Product Name"
@@ -100,7 +100,7 @@
         android:textSize="12sp" />
 
     <TextView
-        android:id="@+id/attribute"
+        android:id="@+id/detailAttribute"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Attribute"

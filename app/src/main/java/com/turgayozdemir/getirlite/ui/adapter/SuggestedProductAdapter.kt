@@ -24,9 +24,15 @@ class SuggestedProductAdapter(val suggestedProductList : ArrayList<SuggestedProd
     override fun onBindViewHolder(holder: SuggestedProductHolder, position: Int) {
         holder.binding.productName.text = suggestedProductList[position].name
         holder.binding.productPrice.text = suggestedProductList[position].priceText
-        if (suggestedProductList[position].imageURL != null){
+
+        var url : String = suggestedProductList[position].imageURL ?: suggestedProductList[position].squareThumbnailURL!!
+        if (!url.startsWith("https://") && url.startsWith("http://")){
+            url = url.replaceFirst("http://", "https://")
+        }
+
+        if (url != null){
             Picasso.get()
-                .load(suggestedProductList[position].imageURL)
+                .load(url)
                 .into(holder.binding.productImage)
         }
         else{
