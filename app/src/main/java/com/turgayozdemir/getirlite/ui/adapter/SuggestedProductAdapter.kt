@@ -2,10 +2,13 @@ package com.turgayozdemir.getirlite.ui.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import com.turgayozdemir.getirlite.data.model.SuggestedProduct
 import com.turgayozdemir.getirlite.databinding.RecyclerProductBinding
+import com.turgayozdemir.getirlite.ui.view.ListingFragmentDirections
+
 class SuggestedProductAdapter(val suggestedProductList : ArrayList<SuggestedProduct>) : RecyclerView.Adapter<SuggestedProductAdapter.SuggestedProductHolder>() {
 
     class SuggestedProductHolder(val binding : RecyclerProductBinding) : RecyclerView.ViewHolder(binding.root){
@@ -47,6 +50,17 @@ class SuggestedProductAdapter(val suggestedProductList : ArrayList<SuggestedProd
         }
         else{
             holder.binding.attribute.text = ""
+        }
+
+        holder.binding.productImage.setOnClickListener {
+            println("Clicked Image")
+            val action = ListingFragmentDirections.listingToDetail(
+                url,
+                suggestedProductList[position].price!!.toFloat(),
+                suggestedProductList[position].name!!,
+                suggestedProductList[position].shortDescription
+            )
+            Navigation.findNavController(it).navigate(action)
         }
 
     }

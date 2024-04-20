@@ -3,11 +3,13 @@ package com.turgayozdemir.getirlite.ui.adapter
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
 import com.turgayozdemir.getirlite.data.model.Product
 import com.turgayozdemir.getirlite.databinding.RecyclerProductBinding
+import com.turgayozdemir.getirlite.ui.view.ListingFragmentDirections
 
 class ProductAdapter(val productList : ArrayList<Product>) : RecyclerView.Adapter<ProductAdapter.ProductHolder>() {
 
@@ -25,6 +27,7 @@ class ProductAdapter(val productList : ArrayList<Product>) : RecyclerView.Adapte
     }
 
     override fun onBindViewHolder(holder: ProductHolder, position: Int) {
+
         holder.binding.productName.text = productList[position].name
 
         var url : String = productList[position].imageURL!!
@@ -45,6 +48,17 @@ class ProductAdapter(val productList : ArrayList<Product>) : RecyclerView.Adapte
         }
         else{
             holder.binding.attribute.text = ""
+        }
+
+        holder.binding.productImage.setOnClickListener {
+            println("Clicked Image")
+            val action = ListingFragmentDirections.listingToDetail(
+                url,
+                productList[position].price!!.toFloat(),
+                productList[position].name!!,
+                productList[position].attribute
+            )
+            Navigation.findNavController(it).navigate(action)
         }
     }
 }

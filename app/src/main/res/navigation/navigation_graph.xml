@@ -9,15 +9,43 @@
         android:id="@+id/listingFragment"
         android:name="com.turgayozdemir.getirlite.ui.view.ListingFragment"
         android:label="fragment_listing"
-        tools:layout="@layout/fragment_listing" />
+        tools:layout="@layout/fragment_listing" >
+        <action
+            android:id="@+id/listing_to_detail"
+            app:destination="@id/productDetailFragment" />
+        <action
+            android:id="@+id/listing_to_basket"
+            app:destination="@id/basketFragment" />
+    </fragment>
     <fragment
         android:id="@+id/basketFragment"
         android:name="com.turgayozdemir.getirlite.ui.view.BasketFragment"
         android:label="fragment_basket"
-        tools:layout="@layout/fragment_basket" />
+        tools:layout="@layout/fragment_basket" >
+        <action
+            android:id="@+id/basket_to_listing"
+            app:destination="@id/listingFragment" />
+    </fragment>
     <fragment
         android:id="@+id/productDetailFragment"
         android:name="com.turgayozdemir.getirlite.ui.view.ProductDetailFragment"
         android:label="fragment_product_detail"
-        tools:layout="@layout/fragment_product_detail" />
+        tools:layout="@layout/fragment_product_detail" >
+        <action
+            android:id="@+id/detail_to_listing"
+            app:destination="@id/listingFragment" />
+        <argument
+            android:name="argImageUrl"
+            app:argType="string" />
+        <argument
+            android:name="argProductPrice"
+            app:argType="float" />
+        <argument
+            android:name="argProductName"
+            app:argType="string" />
+        <argument
+            android:name="argProductAttribute"
+            app:argType="string"
+            app:nullable="true" />
+    </fragment>
 </navigation>

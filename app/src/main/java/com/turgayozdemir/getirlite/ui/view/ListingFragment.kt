@@ -42,6 +42,9 @@ class ListingFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        (activity as? MainActivity)?.PageTitle("Ürünler")
+        (activity as? MainActivity)?.CloseIcon(false)
+
         // Initialize ViewModel
         viewModel = ViewModelProvider(requireActivity()).get(ProductViewModel::class.java)
 
