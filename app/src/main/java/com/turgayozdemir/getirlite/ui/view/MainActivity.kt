@@ -6,23 +6,33 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.Navigation.findNavController
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import com.turgayozdemir.getirlite.R
 import com.turgayozdemir.getirlite.databinding.ActivityMainBinding
+import com.turgayozdemir.getirlite.ui.viewmodel.CartViewModel
+import java.text.DecimalFormat
+import java.text.DecimalFormatSymbols
+import java.util.Locale
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var navController: NavController
 
+    private lateinit var cartViewModel: CartViewModel
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
+
+        cartViewModel = ViewModelProvider(this@MainActivity).get(CartViewModel::class.java)
 
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
         navController = navHostFragment.navController
@@ -41,6 +51,15 @@ class MainActivity : AppCompatActivity() {
                 navController.navigate(R.id.listing_to_basket)
             }
         }
+
+
+        cartViewModel.totalPrice.observe(this, Observer { total ->
+            binding.priceText.text = "₺${cartViewModel.formatNumber(total.toFloat(), true)}"
+        })
+    }
+
+    fun getCartViewModel(): CartViewModel {
+        return cartViewModel
     }
 
     fun CloseIcon(value : Boolean){
@@ -59,6 +78,8 @@ class MainActivity : AppCompatActivity() {
     fun CartTotal(value: Float){
         binding.priceText.text = "₺$value"
     }
+
+
 
 
 }
