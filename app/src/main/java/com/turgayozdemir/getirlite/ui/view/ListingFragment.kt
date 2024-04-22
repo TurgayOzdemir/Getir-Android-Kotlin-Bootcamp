@@ -48,6 +48,7 @@ class ListingFragment : Fragment() {
 
         (activity as? MainActivity)?.PageTitle("Ürünler")
         (activity as? MainActivity)?.CloseIcon(false)
+        (activity as? MainActivity)?.CartButton(true)
 
         // Initialize ViewModel
         productViewModel = ViewModelProvider(requireActivity()).get(ProductViewModel::class.java)

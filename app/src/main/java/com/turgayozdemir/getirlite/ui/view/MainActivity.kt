@@ -50,8 +50,14 @@ class MainActivity : AppCompatActivity() {
             if (navController.currentDestination?.id == R.id.listingFragment) {
                 navController.navigate(R.id.listing_to_basket)
             }
+            if (navController.currentDestination?.id == R.id.productDetailFragment) {
+                navController.navigate(R.id.action_productDetailFragment_to_basketFragment)
+            }
         }
 
+        binding.basketTrashcan.setOnClickListener {
+            cartViewModel.clearCart()
+        }
 
         cartViewModel.totalPrice.observe(this, Observer { total ->
             binding.priceText.text = "₺${cartViewModel.formatNumber(total.toFloat(), true)}"
@@ -68,6 +74,19 @@ class MainActivity : AppCompatActivity() {
         }
         else{
             binding.closeIcon.visibility = View.INVISIBLE
+        }
+    }
+
+    fun CartButton(value : Boolean){
+        if (value == true){
+            binding.cartButton.visibility = View.VISIBLE
+            binding.priceText.visibility = View.VISIBLE
+            binding.basketTrashcan.visibility = View.INVISIBLE
+        }
+        else{
+            binding.cartButton.visibility = View.INVISIBLE
+            binding.priceText.visibility = View.INVISIBLE
+            binding.basketTrashcan.visibility = View.VISIBLE
         }
     }
 

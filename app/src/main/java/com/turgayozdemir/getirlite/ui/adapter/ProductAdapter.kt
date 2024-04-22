@@ -90,7 +90,6 @@ class ProductAdapter(val productList : ArrayList<Product>,
         }
 
         val quantity = cartItems[productList[position].id] ?: 0
-        println("quantity : $quantity")
         if (quantity > 0) {
             holder.binding.quantityText.visibility = View.VISIBLE
             holder.binding.quantityText.text = quantity.toString()
@@ -120,7 +119,8 @@ class ProductAdapter(val productList : ArrayList<Product>,
                 url,
                 productList[position].price!!.toFloat(),
                 productList[position].name!!,
-                productList[position].attribute
+                productList[position].attribute,
+                productList[position].id
             )
             Navigation.findNavController(it).navigate(action)
         }

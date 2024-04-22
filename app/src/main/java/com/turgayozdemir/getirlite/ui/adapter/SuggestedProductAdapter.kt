@@ -121,7 +121,8 @@ class SuggestedProductAdapter(val suggestedProductList : ArrayList<SuggestedProd
                 url,
                 suggestedProductList[position].price!!.toFloat(),
                 suggestedProductList[position].name!!,
-                suggestedProductList[position].shortDescription
+                suggestedProductList[position].shortDescription,
+                suggestedProductList[position].id
             )
             Navigation.findNavController(it).navigate(action)
         }

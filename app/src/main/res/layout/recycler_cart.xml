@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="horizontal"
+    android:padding="10sp"
+    >
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="110dp"
+        android:layout_height="110dp">
+
+        <ImageView
+            android:id="@+id/cartProductBorder"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/product_border" />
+
+        <ImageView
+            android:id="@+id/cartProductImage"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:layout_weight="1"
+
+            app:layout_constraintBottom_toBottomOf="@+id/cartProductBorder"
+            app:layout_constraintEnd_toEndOf="@+id/cartProductBorder"
+            app:layout_constraintStart_toStartOf="@+id/cartProductBorder"
+            app:layout_constraintTop_toTopOf="@+id/cartProductBorder"
+            app:srcCompat="@drawable/ornek" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="170dp"
+        android:layout_height="110dp">
+
+        <TextView
+            android:id="@+id/cartProductPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="₺0,00"
+            android:textColor="#5D3EBB"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/cartAttribute"
+            app:layout_constraintTop_toBottomOf="@+id/cartAttribute" />
+
+        <TextView
+            android:id="@+id/cartProductName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Product Name"
+            android:textColor="#000000"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toTopOf="@+id/cartAttribute"
+            app:layout_constraintStart_toStartOf="@+id/cartAttribute" />
+
+        <TextView
+            android:id="@+id/cartAttribute"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="Attribute"
+            android:textColor="#697487"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="110dp">
+
+        <TextView
+            android:id="@+id/cartProductItemCount"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_weight="1"
+            android:background="#5D3EBA"
+            android:gravity="center"
+            android:text="1"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/cartProductPlus"
+            app:layout_constraintEnd_toStartOf="@+id/cartProductPlus"
+            app:layout_constraintTop_toTopOf="@+id/cartProductPlus" />
+
+        <ImageView
+            android:id="@+id/cartProductMinus"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:src="@drawable/minus"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="@+id/cartProductItemCount"
+            app:layout_constraintEnd_toStartOf="@+id/cartProductItemCount"
+            app:layout_constraintTop_toTopOf="@+id/cartProductItemCount" />
+
+        <ImageView
+            android:id="@+id/cartProductPlus"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_marginEnd="8dp"
+            android:src="@drawable/plus"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/cartProductTrashcan"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:src="@drawable/trashcan"
+            app:layout_constraintBottom_toBottomOf="@+id/cartProductItemCount"
+            app:layout_constraintEnd_toStartOf="@+id/cartProductItemCount"
+            app:layout_constraintTop_toTopOf="@+id/cartProductItemCount" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+</LinearLayout>

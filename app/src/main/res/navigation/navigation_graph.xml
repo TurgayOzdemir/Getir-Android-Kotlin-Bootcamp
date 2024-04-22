@@ -47,5 +47,11 @@
             android:name="argProductAttribute"
             app:argType="string"
             app:nullable="true" />
+        <argument
+            android:name="argProductId"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_productDetailFragment_to_basketFragment"
+            app:destination="@id/basketFragment" />
     </fragment>
 </navigation>

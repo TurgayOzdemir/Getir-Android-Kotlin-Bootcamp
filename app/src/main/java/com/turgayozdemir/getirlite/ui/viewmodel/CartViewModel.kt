@@ -51,6 +51,10 @@ class CartViewModel : ViewModel() {
         _cartItems.value = listOf()
     }
 
+    fun getQuantityById(productId: String): Int {
+        return cartItems.value?.find { it.id == productId }?.quantity ?: 0
+    }
+
     fun formatNumber(number: Float, isSpecialFormat: Boolean): String {
         val symbols = DecimalFormatSymbols(Locale.getDefault()).apply {
             decimalSeparator = ','

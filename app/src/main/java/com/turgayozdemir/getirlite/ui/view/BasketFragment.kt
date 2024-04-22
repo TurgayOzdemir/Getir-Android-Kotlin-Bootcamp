@@ -47,13 +47,18 @@ class BasketFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        (activity as? MainActivity)?.CartButton(false)
+
         cartViewModel = (activity as MainActivity).getCartViewModel()
 
         cartViewModel.totalPrice.observe(activity as MainActivity, Observer { total ->
             binding.basketTotalText.text = "₺${cartViewModel.formatNumber(total.toFloat(), false)}"
         })
 
-        cartAdapter = CartAdapter(ArrayList())
+        cartAdapter = CartAdapter(ArrayList(),
+            { product -> cartViewModel.addItemToCart(product) },
+            { product -> cartViewModel.removeItemFromCart(product.id) },
+            mapOf())
         binding.basketRecyclerView.layoutManager = LinearLayoutManager(context)
         binding.basketRecyclerView.adapter = cartAdapter
 
@@ -62,6 +67,13 @@ class BasketFragment : Fragment() {
         }
 
         suggestedProduct()
+
+        cartViewModel.cartItems.observe(viewLifecycleOwner) { cartItems ->
+            val cartMap = cartItems.associate { it.id to it.quantity }
+            cartAdapter.updateCartMap(cartMap)
+        }
+
+        (activity as? MainActivity)?.CloseIcon(true)
 
     }
 

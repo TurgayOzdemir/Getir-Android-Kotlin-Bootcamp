@@ -50,6 +50,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
+            android:visibility="visible"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -63,10 +64,22 @@
             android:text="₺0,00"
             android:textColor="#5D3EBC"
             android:textStyle="bold"
+            android:visibility="visible"
             app:layout_constraintBottom_toBottomOf="@+id/cartButton"
             app:layout_constraintEnd_toEndOf="@+id/cartButton"
             app:layout_constraintStart_toStartOf="@+id/cartButton"
             app:layout_constraintTop_toTopOf="@+id/cartButton" />
+
+        <ImageView
+            android:id="@+id/basketTrashcan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/trashcan_png" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
